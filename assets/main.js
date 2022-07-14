@@ -21,6 +21,10 @@ window.onload = () => {
           let min = parseInt(battery.dischargingTime / 60 - hr * 60);
           batteryTime.innerHTML = `${hr} h ${min} min`;
         }
+        if (batteryLevel.style.width < 20 + "%") {
+          batteryLevel.style.backgroundColor = "rgb(255, 67, 67)";
+          battery_def.style.backgroundColor = "rgb(255, 67, 67)";
+        }
       }
     }
 
