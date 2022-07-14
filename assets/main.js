@@ -5,6 +5,8 @@ const battery_def = document.querySelector(".battery_def");
 
 window.onload = () => {
   navigator.getBattery().then(function (battery) {
+    const level = battery.level * 100;
+    const status = level + "%";
     function updateAllBatteryInfo() {
       updateChargingInfo();
       updateLevelInfo();
@@ -14,7 +16,7 @@ window.onload = () => {
     function updateChargingInfo() {
       if (battery.charging === true) {
         batteryLevel.classList.add("charging");
-        batteryLevel.style.backgroundColor = "darkgreen";
+        battery_def.style.backgroundColor = "darkgreen";
       } else {
         batteryLevel.classList.remove("charging");
         if (parseInt(battery.dischargingTime)) {
@@ -22,7 +24,7 @@ window.onload = () => {
           let min = parseInt(battery.dischargingTime / 60 - hr * 60);
           batteryTime.innerHTML = `${hr} h ${min} min`;
         }
-        if (batteryLevel.style.width < 20 + "%") {
+        if (level < 20) {
           batteryLevel.style.backgroundColor = "rgb(255, 67, 67)";
           battery_def.style.backgroundColor = "rgb(255, 67, 67)";
         }
