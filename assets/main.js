@@ -5,8 +5,6 @@ const battery_def = document.querySelector(".battery_def");
 
 window.onload = () => {
   navigator.getBattery().then(function (battery) {
-    const level = battery.level * 100;
-    const status = level + "%";
     function updateAllBatteryInfo() {
       updateChargingInfo();
       updateLevelInfo();
