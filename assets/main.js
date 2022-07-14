@@ -42,10 +42,5 @@ window.onload = () => {
     battery.addEventListener("levelchange", () => {
       updateAllBatteryInfo();
     });
-
-    if (batteryLevel.style.width < 20 + "%") {
-      batteryLevel.style.backgroundColor = "rgb(255, 67, 67)";
-      battery_def.style.backgroundColor = "rgb(255, 67, 67)";
-    }
   });
 };
