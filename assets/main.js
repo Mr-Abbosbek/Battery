@@ -14,6 +14,7 @@ window.onload = () => {
     function updateChargingInfo() {
       if (battery.charging === true) {
         batteryLevel.classList.add("charging");
+        batteryLevel.style.backgroundColor = "darkgreen";
       } else {
         batteryLevel.classList.remove("charging");
         if (parseInt(battery.dischargingTime)) {
