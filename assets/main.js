@@ -5,6 +5,7 @@ const battery_def = document.querySelector(".battery_def");
 
 window.onload = () => {
   navigator.getBattery().then(function (battery) {
+    const lev = battery.level * 100;
     function updateAllBatteryInfo() {
       updateChargingInfo();
       updateLevelInfo();
@@ -22,7 +23,7 @@ window.onload = () => {
           let min = parseInt(battery.dischargingTime / 60 - hr * 60);
           batteryTime.innerHTML = `${hr} h ${min} min`;
         }
-        if (level < 20) {
+        if (lev < 20) {
           batteryLevel.style.backgroundColor = "rgb(255, 67, 67)";
           battery_def.style.backgroundColor = "rgb(255, 67, 67)";
         }
@@ -30,9 +31,9 @@ window.onload = () => {
     }
 
     function updateLevelInfo() {
-      const level = battery.level * 100;
-      const status = level + "%";
+      const status = lev + "%";
       batteryLevel.style.width = status;
+      console.log(status);
       batteryP.innerHTML = parseInt(status) + "%";
     }
 
